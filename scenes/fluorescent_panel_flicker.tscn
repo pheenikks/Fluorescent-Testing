@@ -1,0 +1,13 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/fluorescent_panel.tscn" id="1_panel"]
+[ext_resource type="Script" path="res://scripts/fluorescent_flicker.gd" id="2_flicker"]
+
+[node name="FluorescentPanelFlicker" instance=ExtResource("1_panel")]
+script = ExtResource("2_flicker")
+
+[node name="Diffuser" parent="." index="1"]
+gi_mode = 0
+
+[node name="Light" parent="." index="2"]
+light_bake_mode = 0

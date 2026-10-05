@@ -1,0 +1,33 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://caca08tgfqoy3"]
+
+[ext_resource type="Shader" uid="uid://xesl2al0sqpq" path="res://shaders/ceiling_tile.gdshader" id="1_shader"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_speckle"]
+frequency = 0.08
+fractal_octaves = 3
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_speckle"]
+noise = SubResource("FastNoiseLite_speckle")
+seamless = true
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_stains"]
+seed = 7
+frequency = 0.012
+fractal_octaves = 4
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_stains"]
+noise = SubResource("FastNoiseLite_stains")
+seamless = true
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_shader")
+shader_parameter/tile_color = Color(0.86, 0.84, 0.76, 1)
+shader_parameter/grid_color = Color(0.74, 0.72, 0.64, 1)
+shader_parameter/tile_size = 0.6
+shader_parameter/grid_width = 0.024
+shader_parameter/speckle = SubResource("NoiseTexture2D_speckle")
+shader_parameter/speckle_scale = 0.8
+shader_parameter/stains = SubResource("NoiseTexture2D_stains")
+shader_parameter/stain_scale = 0.05
+shader_parameter/stain_color = Color(0.62, 0.54, 0.36, 1)

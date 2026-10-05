@@ -1,0 +1,44 @@
+[gd_scene format=3]
+
+[ext_resource type="Material" path="res://materials/light_housing.tres" id="1_housing"]
+[ext_resource type="Material" path="res://materials/light_diffuser.tres" id="2_diffuser"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_housing"]
+material = ExtResource("1_housing")
+add_uv2 = true
+size = Vector3(1.2, 0.05, 0.6)
+
+[sub_resource type="BoxMesh" id="BoxMesh_diffuser"]
+material = ExtResource("2_diffuser")
+add_uv2 = true
+size = Vector3(1.14, 0.01, 0.54)
+
+[node name="FluorescentPanel" type="Node3D"]
+
+[node name="Housing" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.02, 0)
+cast_shadow = 0
+mesh = SubResource("BoxMesh_housing")
+
+[node name="Diffuser" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.045, 0)
+cast_shadow = 0
+mesh = SubResource("BoxMesh_diffuser")
+
+[node name="Light" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -0.06, 0)
+light_color = Color(1, 0.96, 0.8, 1)
+light_energy = 2.5
+light_size = 0.5
+light_specular = 0.3
+light_bake_mode = 1
+shadow_enabled = true
+shadow_blur = 1.5
+distance_fade_enabled = true
+distance_fade_begin = 24.0
+distance_fade_shadow = 16.0
+distance_fade_length = 8.0
+spot_range = 8.0
+spot_attenuation = 1.2
+spot_angle = 89.0
+spot_angle_attenuation = 0.5

@@ -1,0 +1,35 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://yjdkfbbqtk83"]
+
+[ext_resource type="Shader" uid="uid://413muskd3lwb" path="res://shaders/wallpaper.gdshader" id="1_shader"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_bump"]
+seed = 5
+frequency = 0.2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_bump"]
+noise = SubResource("FastNoiseLite_bump")
+seamless = true
+as_normal_map = true
+bump_strength = 2.0
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_grime"]
+seed = 11
+frequency = 0.03
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_grime"]
+width = 1024
+height = 1024
+noise = SubResource("FastNoiseLite_grime")
+seamless = true
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_shader")
+shader_parameter/base_color = Color(0.8, 0.74, 0.47, 1)
+shader_parameter/stripe_color = Color(0.74, 0.67, 0.4, 1)
+shader_parameter/damp_color = Color(0.42, 0.36, 0.2, 1)
+shader_parameter/stripe_width = 0.06
+shader_parameter/motif_spacing = 0.12
+shader_parameter/damp_height = 0.35
+shader_parameter/grime = SubResource("NoiseTexture2D_grime")
+shader_parameter/bump = SubResource("NoiseTexture2D_bump")
